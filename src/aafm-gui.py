@@ -38,7 +38,7 @@ class Aafm_GUI:
 	def __init__(self):
 		
 		# The super core
-		self.aafm = Aafm('adb', os.getcwd(), '/mnt/sdcard/')
+		self.aafm = Aafm('adb', os.getcwd(), '/data/local/tmp/')
 		self.queue = []
 
 		self.basedir = os.path.dirname(os.path.abspath(__file__))
@@ -153,7 +153,7 @@ class Aafm_GUI:
 		self.window.set_title("Android ADB file manager")
 		#self.adb = 'adb'
 		self.host_cwd = os.getcwd()
-		self.aafm.set_device_cwd('/mnt/sdcard/')
+		self.aafm.set_device_cwd('/data/local/tmp/')
 
 		self.refresh_all()
 
@@ -170,13 +170,13 @@ class Aafm_GUI:
 		self.aafm.refresh_devices()
 		selected = self.aafm.get_device_serial()
 		if before != selected:
-			self.aafm.set_device_cwd('/mnt/sdcard/')
+			self.aafm.set_device_cwd('/data/local/tmp/')
 			self.refresh_device_files()
 
 		def on_menu_item_toggled(item, serial):
 			if item.get_active():
 				self.aafm.set_device_serial(serial)
-				self.aafm.set_device_cwd('/mnt/sdcard/')
+				self.aafm.set_device_cwd('/data/local/tmp/')
 				self.refresh_device_files()
 
 		menu = self.menuDevices
